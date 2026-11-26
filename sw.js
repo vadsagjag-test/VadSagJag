@@ -1,5 +1,5 @@
-const CACHE='vadsagjag-v7';
-const FILES=['./','./index.html','./app.js?v=0.7','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const CACHE='vadsagjag-v8';
+const FILES=['./','./index.html','./app.js?v=0.8','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))),self.clients.claim()])));
 self.addEventListener('fetch',event=>{
